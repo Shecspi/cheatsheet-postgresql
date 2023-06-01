@@ -69,7 +69,66 @@ VALUES
 
 Пример:
 ```sql
-INSERT INTO aircrafts ( aircrafts_code, model, range )
+INSERT INTO aircrafts ( aircraft_code, model, range )
 VALUES ( 'SU9', 'Sukhoi SuperJet-100', 3000 );
 
+```
+
+### SELECT - Выборка из таблицы
+
+Синтаксис:
+```sql
+SELECT <Имя столбца>, <Имя столбца>, ...
+	FROM <Имя таблицы>        -- Таблица, откуда осуществляется выборка
+	[WHERE <Условие>]         -- Условие для выборки
+	[ORDER BY <Имя столбца>]  -- Сортировка
+```
+
+Пример:
+```sql
+SELECT * FROM aircrafts ORDER BY model;
+```
+Вывод:
+```
+aircraft_code |        model        | range    
+---------------+---------------------+-------  
+SU9           | Sukhoi SuperJet-100 |  3000  
+773           | Boeing 777-300      | 11000  
+321           | Airbus A321-200     |  5600  
+CN1           | Cessna 208 Caravan  |  1200  
+(4 строки)
+```
+
+### UPDATE - Обновление данных в таблице
+
+Синтаксис:
+```sql
+UPDATE <Имя таблицы>
+	SET <Имя столбца> = <Значение столбца>
+		<Имя столбца> = <Значение столбца>
+	WHERE <Устолвие>
+```
+
+Пример:
+```sql
+UPDATE aircrafts SET range = 3500 WHERE aircraft_code = 'SU9';
+```
+
+### DELETE - Удаление строки из таблицы
+
+Синтаксис:
+```sql
+DELETE
+	FROM <Имя таблицы>
+	WHERE <Условие>
+```
+
+Пример:
+```sql
+DELETE FROM aircrafts WHERE aircraft_code = 'CN1';
+```
+
+Для удаления всех строк из таблицы нужно убрать условие `WHERE`:
+```sql
+DELETE FROM <Имя таблицы>
 ```
